@@ -6,6 +6,6 @@ version: 3.0.12 # any version fake chart
 appVersion: "1.16.0"
 
 dependencies:
-  - name: argo/argocd
-    version: 8.2.5 # argocd helm chart version
+  - name:  argo-cd #argo/argocd
+    version: 5.46.6 # argocd helm chart version
     repository: https://argoproj.github.io/argo-helm
