@@ -1,0 +1,11 @@
+apiVersion: v2
+name: airflow-parent         # You can name it anything
+description: A parent Helm chart to deploy Apache Airflow
+type: application
+version: 0.1.0               # Chart version of your parent
+
+appVersion: "2.9.1"          # Optional: version of the app you’re deploying
+dependencies:
+  - name: airflow
+    version: 1.13.1
+    repository: https://airflow.apache.org

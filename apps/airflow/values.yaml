@@ -1,0 +1,7 @@
+airflow:
+  ingress:
+    enabled: false
+  executor: LocalExecutor
+  webserver:
+    service:
+      type: ClusterIP
