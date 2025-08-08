@@ -2,5 +2,3 @@ argo-cd:
   crds:
     install: true
     keep: false
-  dex:
-    enabled: false
