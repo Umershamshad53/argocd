@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: my-argo-cd
   namespace: argocd
 spec:
   project: default
@@ -10,8 +10,9 @@ spec:
     targetRevision: HEAD
     path: apps/argo-cd
     helm:
+      releaseName: my-argo-cd          # optional: if you have custom values files
       valueFiles:
-        - values.yaml          # optional: if you have custom values files
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
