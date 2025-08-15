@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     path: apps/argo-cd
     helm:
-      releaseName: my-argo-cd          # optional: if you have custom values files
+      releaseName: argocd          # optional: if you have custom values files
       valueFiles:
         - values.yaml
   destination:
