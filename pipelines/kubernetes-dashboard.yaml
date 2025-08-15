@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-dashboard
+  namespace: argocd
+  labels:
+    deploymentStrategy: helm
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Umershamshad53/argocd.git   # your Git repo
+    targetRevision: HEAD
+    path: apps/kubernetes-dashboard                             # path in your Git repo where values.yaml is
+    helm:
+      releaseName: kubernetes-dashboard
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kubernetes-dashboard
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
