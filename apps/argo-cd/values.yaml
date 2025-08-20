@@ -15,6 +15,7 @@ argo-cd:
           paths:
             - path: /
               pathType: Prefix
+              servicePort: 443
       tls:
         - secretName: argocd-server-tls
           hosts:
