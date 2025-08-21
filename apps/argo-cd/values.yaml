@@ -1,24 +1,22 @@
-argo-cd:
-  crds:
-    install: true
-    keep: false
+crds:
+  install: true
+  keep: false
 
-  server:
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: argocd-umer.786999.xyz
-        external-dns.alpha.kubernetes.io/target: 192.99.176.115
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: argocd-umer.786999.xyz
+    external-dns.alpha.kubernetes.io/target: 192.99.176.115
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  hosts:
+    - host: argocd-umer.786999.xyz
+      paths:
+        - path: /
+          pathType: Prefix
+          servicePort: 443
+  tls:
+    - secretName: argocd-server-tls
       hosts:
-        - host: argocd-umer.786999.xyz
-          paths:
-            - path: /
-              pathType: Prefix
-              servicePort: 443
-      tls:
-        - secretName: argocd-server-tls
-          hosts:
-            - argocd-umer.786999.xyz
+        - argocd-umer.786999.xyz
