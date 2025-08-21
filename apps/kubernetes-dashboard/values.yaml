@@ -1,15 +1,22 @@
-kubernetes-dashboard:
-  crds:
-    install: true
-    keep: false
 
-  server:
-    ingress:
+app:
+  ingress:
+    enabled: true
+    hosts:
+     - umer-dashboard.786999.xyz
+    ingressClassName: nginx
+    useDefaultIngressClass: false
+    useDefaultAnnotations: false
+    pathType: ImplementationSpecific
+    path: /
+    issuer:
+      name: letsencrypt-prod
+      scope: cluster
+    tls:
       enabled: true
-      ingressClassName: nginx
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: dashboard.umer.786999.xyz
-        external-dns.alpha.kubernetes.io/target: 192.99.176.115
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hostname: dashboard.umer.786999.xyz
-      tls: true
+      secretName: "umer-dashboard.786999.xyz"
+    annotations: 
+      external-dns.alpha.kubernetes.io/hostname: umer-dashboard.786999.xyz
+      external-dns.alpha.kubernetes.io/target: 192.99.176.115
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+
