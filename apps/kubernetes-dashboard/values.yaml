@@ -6,7 +6,7 @@ app:
      - umer-dashboard.786999.xyz
     ingressClassName: nginx
     useDefaultIngressClass: false
-    useDefaultAnnotations: false
+    useDefaultAnnotations: true
     pathType: Prefix
     path: /
     issuer:
