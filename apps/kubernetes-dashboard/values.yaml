@@ -7,7 +7,7 @@ app:
     ingressClassName: nginx
     useDefaultIngressClass: false
     useDefaultAnnotations: false
-    pathType: ImplementationSpecific
+    pathType: Prefix
     path: /
     issuer:
       name: letsencrypt-prod
