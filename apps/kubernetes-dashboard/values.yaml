@@ -1,0 +1,17 @@
+kubernetes-dashboard:
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: dashboard-umer.786999.xyz
+      external-dns.alpha.kubernetes.io/target: 192.99.176.115
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: dashboard-umer.786999.xyz
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+     - secretName: kubernetes-dashboard-tls
+       hosts:
+         - dashboard-umer.786999.xyz
