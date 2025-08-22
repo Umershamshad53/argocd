@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-ingress
+  namespace: kubernetes-dashboard
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: dashboard-umer.786999.xyz
+    external-dns.alpha.kubernetes.io/target: 192.99.176.115
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - dashboard-umer.786999.xyz
+      secretName: kubernetes-dashboard-tls
+  rules:
+    - host: dashboard-umer.786999.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard-web 
+                port:
+                  number: 8000
