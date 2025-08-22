@@ -2,19 +2,19 @@ kubernetes-dashboard:
   crds:
     install: true
     keep: false
-  kong:
-    ingress:
-      enabled: true
-      ingressClassName: nginx
-      hosts:
-        - dashboard.umer.786999.xyz
-      pathType: Prefix
-      path: /
-      annotations: 
-        external-dns.alpha.kubernetes.io/hostname: dashboard.umer.786999.xyz
-        external-dns.alpha.kubernetes.io/target: 192.99.176.115
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      tls:
-        - secretName: kubernetes-dashboard-tls
-          hosts:
-            - dashboard.umer.786999.xyz
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - dashboard.umer.786999.xyz
+    path: /
+    pathType: Prefix
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: dashboard.umer.786999.xyz
+      external-dns.alpha.kubernetes.io/target: 192.99.176.115
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: kubernetes-dashboard-tls
+        hosts:
+          - dashboard.umer.786999.xyz
